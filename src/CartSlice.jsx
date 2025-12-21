@@ -8,6 +8,7 @@ export const CartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
         const {name, image, cost} = action.payload
+        /* Check if the item already exist in the arry or not if not add new one and appen it quantity */
         const existingItem = state.items.find(item => item.name === name)
         if (existingItem) {
             existingItem.quantity++ ;
