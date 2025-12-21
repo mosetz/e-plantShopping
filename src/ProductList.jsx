@@ -237,19 +237,21 @@ function ProductList({ onHomeClick }) {
         fontSize: '30px',
         textDecoration: 'none',
     }
+    
+    const handleHomeClick = (e) => {
+        e.preventDefault();
+        onHomeClick();
+    };
 
-    const handleHomeClick = (product) => {
+
+    const handleAddTocart = (product) => {
         dispatch(addItem(product));
 
         setAddedToCart((prevState) => ({
-            ...prevState, [product.name]: true
+            ...prevState, [product.name]: true,
         }));
     };
-
-    const handleAddTocart = (e) => {
-        e.preventDefault();
-        
-    };
+    
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -296,8 +298,8 @@ function ProductList({ onHomeClick }) {
                             
                             {/* prodoct-list section */}
                             <div className='product-list'>
-                                {category.map((item, index) => (
-                                    <div key={index} className='product-card'>
+                                {category.plants.map((item, itemIndex) => (
+                                    <div key={itemIndex} className='product-card'>
                                         <img src={item.src} alt={item.name} className='product-image'/>
 
                                         {/* Detail about the plant section */}
