@@ -16,11 +16,24 @@ export const CartSlice = createSlice({
             state.items.push({name, image, cost, quantity: 1});
         }
     },
-    removeItem: (state, action) => {
-    },
-    updateQuantity: (state, action) => {
-
     
+    /**
+     * This reducer function filter out the item that pass by a action payload 
+     * Example {payload: {name: plant }} so filter method will filter that out since it !=
+     * @param {*} state 
+     * @param {*} action 
+     */
+    removeItem: (state, action) => {
+        state.items = state.items.filter(item => item.name !== action.payload);
+    },
+
+    updateQuantity: (state, action) => {
+        const {name, quantity} = action.payload;
+        const lookup = state.items.find(item => item.name === name);
+        if (lookup){
+            lookup.quantity = quantity
+        }
+        
     },
   },
 });
