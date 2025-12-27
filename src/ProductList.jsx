@@ -224,7 +224,7 @@ function ProductList({ onHomeClick }) {
         padding: '15px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignIems: 'center',
+        alignItems: 'center',
         fontSize: '20px',
     }
     const styleObjUl = {
@@ -245,7 +245,7 @@ function ProductList({ onHomeClick }) {
     };
 
 
-    const handleAddTocart = (product) => {
+    const handleAddToCart = (product) => {
         dispatch(addItem(product));
 
         setAddedToCart((prevState) => ({
@@ -312,7 +312,7 @@ function ProductList({ onHomeClick }) {
                                         <div className='product-title'>{item.name}</div>
                                         <div className='product-description'>{item.description}</div>
                                         <div className='product-cost'> {item.cost} </div>
-                                        <button className={addedToCart[item.name] ? "product-button added-to-cart" : "product-button"} disabled={addedToCart[item.name]} onClick={() => handleAddTocart(item)}>
+                                        <button className={addedToCart[item.name] ? "product-button added-to-cart" : "product-button"} disabled={addedToCart[item.name]} onClick={() => handleAddToCart(item)}>
                                             {addedToCart[item.name] ? 'Added to Cart' : 'Add to Cart'}
                                         </button>
                                     </div>
